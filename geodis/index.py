@@ -83,7 +83,7 @@ class TextIndex(AbstractIndex):
     @staticmethod
     def normalizeString(str_):
         
-        return str_.translate(TextIndex.trantab, TextIndex.stopchars).lower().strip().replace('  ', ' ')
+        return str_.translate(str.maketrans("-_,", "   ",TextIndex.stopchars)).lower().strip().replace('  ', ' ')
     
     def save(self, obj, redisConn):
         
