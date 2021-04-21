@@ -54,7 +54,7 @@ class Location(object):
     def _key(cls, _valdict):
         
         h = hash(':'.join((str(_valdict.get(x)) for x in cls.__keyspec__ or cls.__spec__)))
-        return '%s:%s' % (cls.__name__,  base64.b64encode(struct.pack('q', h).strip('=')))
+        return '%s:%s' % (cls.__name__,  base64.b64encode(struct.pack('q', h).strip(b'=')))
         
     def getId(self):
 
