@@ -122,7 +122,7 @@ class TextIndex(AbstractIndex):
             return tmpKey if p[0] > 0 else None
     
     
-from geohasher import hasher
+from .geohasher import hasher
 import time
 import itertools
 TSTabs = 0

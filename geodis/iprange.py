@@ -26,7 +26,7 @@
 
 
 import socket, struct, re
-from geohasher import hasher
+from .geohasher import hasher
 import struct
 
 from .city import City
@@ -82,7 +82,7 @@ class IPRange(object):
         try:
             geoKey,rng = record[0][0].split('@')
             
-            lat,lon = hasher.decode(long(geoKey))
+            lat,lon = hasher.decode(int(geoKey))
             
             rngMin, rngMax, zipcode =  rng.split(':')
             rngMin = int(rngMin)

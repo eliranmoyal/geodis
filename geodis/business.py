@@ -28,7 +28,7 @@ import re
 import math
 import itertools
 
-from geohasher import hasher
+from .geohasher import hasher
 
 from . import countries
 from .location import Location

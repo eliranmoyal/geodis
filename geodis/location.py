@@ -26,7 +26,7 @@
 
 from .countries import countries
 
-from geohasher import hasher
+from .geohasher import hasher
 import math
 import struct
 import base64

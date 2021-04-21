@@ -1,3 +1,2 @@
 redis>=2.7.1
-geohasher==0.1dev
 upoints==0.12.2
