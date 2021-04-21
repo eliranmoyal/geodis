@@ -46,7 +46,7 @@ class BusinessImporter(Importer):
         
         try:
             fp = open(self.fileName)
-        except Exception, e:
+        except Exception as e:
             logging.error("could not open file %s for reading: %s" ,self.fileName, e)
             return False
         
@@ -89,17 +89,17 @@ class BusinessImporter(Importer):
                     #print loc
                 loc.save(pipe)
                 
-            except Exception, e:
+            except Exception as e:
                 logging.exception("Could not import line %s: %s" ,row, e)
                 fails+=1
                 
             
             i += 1
             if i % 1000 == 0:
-                print i
+                print(i)
                 pipe.execute()
         pipe.execute()
 
         logging.info("Imported %d businesses, failed %d times" , i, fails)
-        print "Finished!"
+        print("Finished!")
         return True

@@ -196,8 +196,8 @@ class Location(object):
             return Location.getLatLonDistance(coords1, coords2)
             #return math.sqrt(math.pow(coords1[0] - coords2[0], 2) +
             #math.pow(coords1[1] - coords2[1], 2))
-        except Exception, e:
-            print e
+        except Exception as e:
+            print(e)
             return None
 
         
@@ -238,9 +238,9 @@ class Location(object):
         if not candidates :
             return None
         
-        for i in xrange(len(candidates)):
+        for i in range(len(candidates)):
             
-            gk = long(candidates[i][1])
+            gk = int(candidates[i][1])
             
             dist = Location.getDistance(geoKey, gk)
             if dist is None:

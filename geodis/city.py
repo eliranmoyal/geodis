@@ -32,6 +32,9 @@ import re
 import math
 import logging
 
+def cmp(a, b):
+    return (a > b) - (a < b)
+
 class City(Location):
     """
     Wrapper for a city location object
@@ -156,9 +159,9 @@ if __name__ == '__main__':
     #cities = City.getByRadius(lat, lon, d, r, "haifa")
     cities = City.getByName('tel aviv', r, lat, lon)
     et = time.time()
-    print 1000*(et - st),"ms"
-    print "Found %d cities!" % len(cities)
-    print "\n".join(["%s %s, %s %.02fkm pop %s score %s" % (c.country, c.name, c.state, Location.getLatLonDistance((lat, lon), (c.lat, c.lon)), c.population, c.score(lat, lon)) for c in cities])
+    print(1000*(et - st),"ms")
+    print("Found %d cities!" % len(cities))
+    print("\n".join(["%s %s, %s %.02fkm pop %s score %s" % (c.country, c.name, c.state, Location.getLatLonDistance((lat, lon), (c.lat, c.lon)), c.population, c.score(lat, lon)) for c in cities]))
     
     
 #    for city in cities:

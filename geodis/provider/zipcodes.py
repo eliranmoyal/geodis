@@ -46,7 +46,7 @@ class ZIPImporter(Importer):
 
         try:
             fp = open(self.fileName)
-        except Exception, e:
+        except Exception as e:
             logging.error("could not open file %s for reading: %s" ,self.fileName, e)
             return False
 
@@ -60,7 +60,7 @@ class ZIPImporter(Importer):
         for key in self.redis.sort(City.getGeohashIndexKey(), by='nosort'):
             try:
                 city = self.redis.hgetall(key)#dict(zip(City.__spec__, key.split(':')[1:]))
-            except Exception, e:
+            except Exception as e:
                 logging.error(e)
                 continue
             
@@ -80,7 +80,7 @@ class ZIPImporter(Importer):
                 state['cities'][city['name']] = city['cityId']
 
 
-        print features.keys()
+        print(features.keys())
         pipe = self.redis.pipeline()
         i = 0
         fails = 0
@@ -125,7 +125,7 @@ class ZIPImporter(Importer):
 
 
 
-            except Exception, e:
+            except Exception as e:
                 logging.exception("Could not import line #%d: %s, %s: %s" % (i+1, city, state, e))
                 fails += 1
 #

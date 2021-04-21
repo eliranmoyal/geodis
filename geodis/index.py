@@ -49,7 +49,7 @@ class TextIndex(AbstractIndex):
     classdocs
     '''
     
-    trantab = string.maketrans("-_,", "   ")
+    trantab = str.maketrans("-_,", "   ")
     stopchars = "\"'\\`'[]{}()./?:)(*&^%$#@!="
     TMP_KEY_EXPIRATION = 600
     

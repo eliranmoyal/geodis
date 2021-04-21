@@ -93,7 +93,7 @@ class State(object):
         """
         
         if not State._index_:
-            for code, geocode in state_geocodes.iteritems():
+            for code, geocode in state_geocodes.items():
                 name = code_to_state.get(code, '').capitalize()
                 State._index_[code] = State(name, code, geocode[0], geocode[1])
                 State._index_[name.upper()] = State._index_[code]
@@ -125,6 +125,6 @@ State.buildIndex()
 
 if __name__ == '__main__':
     
-    print State.get('CA')
+    print(State.get('CA'))
     
     
