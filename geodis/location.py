@@ -32,6 +32,18 @@ import struct
 import base64
 import logging
 
+
+def translate_dict_to_strs(d):
+    new_dict = {}
+    for key, val in d.items():
+        new_key,new_val = key,val
+        if isinstance(key,bytes):
+            new_key = key.decode("utf-8")
+        if isinstance(val,bytes):
+            new_val = val.decode("utf-8")
+        new_dict[new_key] = new_val
+    return new_dict
+
 class Location(object):
     """
     This is the base class for all location subclasses
@@ -154,8 +166,8 @@ class Location(object):
         p  = redisConn.pipeline(False)
         [p.hgetall(id) for id in ids]
         rx = p.execute()
-        
-        ret = [cls(**d) for d in filter(None, rx)]
+
+        ret = [cls(**(translate_dict_to_strs(d))) for d in filter(None, rx)]
         
 #        for id in ids:
 #            ret.append(cls.load(id, redisConn))
