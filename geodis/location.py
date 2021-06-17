@@ -122,7 +122,7 @@ class Location(object):
             return None
         
         #build a new object based on the loaded dict
-        return cls(**d)
+        return cls(**(translate_dict_to_strs(d)))
     
     def score(self, refLat, refLon):
         """
@@ -243,7 +243,7 @@ class Location(object):
         ret = tx.execute()
 
         #find the two closest locations to the left and to the right of us
-        candidates = filter(None, ret[0]) + filter(None, ret[1])
+        candidates = list(filter(None, ret[0])) + list(filter(None, ret[1]))
         
         closestDist = None
         selected = None

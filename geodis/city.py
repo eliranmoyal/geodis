@@ -27,7 +27,7 @@
 from .location import Location
 from .index import TextIndex, GeoboxIndex, GeoBoxTextIndex
 from .us_states import State
-
+from functools import cmp_to_key
 import re
 import math
 import logging
@@ -123,9 +123,9 @@ class City(Location):
         if len(cities) > 1:
             
             #sort by distance to the user
-            cities.sort(lambda x,y: cmp(x.score(referenceLat, referenceLon),
+            cities.sort(key=cmp_to_key(lambda x,y: cmp(x.score(referenceLat, referenceLon),
                                         y.score(referenceLat, referenceLon)
-                                    ), reverse=True)
+                                    )), reverse=True)
 
 
 
@@ -138,7 +138,7 @@ class City(Location):
         
         
         nodes = cls.loadByNamedKey('geoname', redisConn, lat, lon, radius, text or '')
-        nodes.sort(lambda x,y: cmp(y.score(lat, lon), x.score(lat,lon)))
+        nodes.sort(key=cmp_to_key(lambda x,y: cmp(y.score(lat, lon)), x.score(lat,lon)))
         return nodes[:limit]
         
 if __name__ == '__main__':
