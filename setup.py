@@ -11,7 +11,7 @@ setup(
     scripts=['geodis/geodis'],
     packages=find_packages(),
     include_package_data = True,
-    install_requires=['redis>=2.7.1', 'geohasher==0.1dev', 'upoints==0.12.2']
+    install_requires=['redis>=2.7.1', 'upoints==0.12.2']
 
 )
 
