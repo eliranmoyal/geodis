@@ -267,7 +267,7 @@ class Location(object):
             return None
 
         
-        return cls.load(str(candidates[selected][0]), redisConn)
+        return cls.load(candidates[selected][0].decode("utf-8"), redisConn)
 
 
         
